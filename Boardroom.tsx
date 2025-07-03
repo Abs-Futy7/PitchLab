@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Card } from './ui/card';
+import { Card } from '@/components/ui/card';
 import { Lightbulb, Target, Users, TrendingUp, FolderTree } from 'lucide-react';
 import { motion } from 'framer-motion';
 
