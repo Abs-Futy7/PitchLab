@@ -1,5 +1,5 @@
 
-import { Menu, X, Sparkles, ChevronDown } from 'lucide-react';
+
 
 function Navbar() {
 

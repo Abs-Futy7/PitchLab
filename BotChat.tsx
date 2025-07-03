@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader} from './ui/dialog';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
-import ChatInput from './ChatInput';
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import ChatInput from '@/components/ChatInput';
 import { askGemini } from '@/lib/gemini';
 import { User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';

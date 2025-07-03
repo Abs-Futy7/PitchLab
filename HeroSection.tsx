@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "./Navbar";
-import Iridescence from "./ui/iridesceneBG";
+import Iridescence from "@/components/ui/iridesceneBG";
 
 export default function HeroSection() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { 
   BrainCircuit, 
   BotMessageSquare, 
@@ -9,7 +9,7 @@ import {
   Sparkles 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
+
 
 interface SidebarProps {
   activeView: string;

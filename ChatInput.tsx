@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { Send, Loader2 } from 'lucide-react';
 
 interface ChatInputProps {
