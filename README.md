@@ -60,7 +60,7 @@ Meet your virtual startup team:
 
 ## 🌐 Live Demo
 
-Experience PitchLab live at: [https://pitchlab-demo.vercel.app](https://pitchlab-demo.vercel.app)
+Experience PitchLab live at: ([https://pitchlab-demo.vercel.app](https://pitchlab-five.vercel.app/))
 
 ## 🚀 Setup Instructions
 
