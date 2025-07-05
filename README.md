@@ -60,7 +60,7 @@ Meet your virtual startup team:
 
 ## 🌐 Live Demo
 
-Experience PitchLab live at: ([https://pitchlab-demo.vercel.app](https://pitchlab-five.vercel.app/))
+Experience PitchLab live at: [https://pitchlab-demo.vercel.app](https://pitchlab-demo.vercel.app)
 
 ## 🚀 Setup Instructions
 
@@ -240,3 +240,268 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Radix UI](https://www.radix-ui.com/) for accessible UI components
 - [Lucide React](https://lucide.dev/) for the beautiful iconography
 - [OGL](https://github.com/oframe/ogl) for WebGL rendering
+
+# PitchLab - AI-Powered Startup Ecosystem
+
+PitchLab is a Next.js application that provides AI co-founders to help you build and scale your startup. Chat with specialized AI agents including CTO, CMO, CFO, and Architect bots to get expert advice on your startup journey.
+
+## Features
+
+- **AI Co-Founders**: Get advice from specialized AI agents
+- **Boardroom Experience**: Interactive dashboard for startup planning
+- **Responsive Design**: Works on desktop and mobile devices
+- **Modern UI**: Built with Tailwind CSS and Framer Motion animations
+
+## Getting Started
+
+### Prerequisites
+
+- Docker Desktop installed and running
+- Node.js 18+ (for local development)
+- Yarn package manager
+
+### Quick Start with Docker
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd pitchlab
+   ```
+
+2. **Build the Docker image**
+   ```bash
+   docker build -t pitchlab .
+   ```
+
+3. **Run the container**
+   ```bash
+   docker run -p 3000:3000 pitchlab
+   ```
+
+4. **Access the application**
+   Open your browser and navigate to `http://localhost:3000`
+
+### Docker Commands
+
+#### Basic Usage
+
+```bash
+# Build the image
+docker build -t pitchlab .
+
+# Run the container
+docker run -p 3000:3000 pitchlab
+
+# Run in background (detached mode)
+docker run -d -p 3000:3000 --name pitchlab-app pitchlab
+
+# Stop the container
+docker stop pitchlab-app
+
+# Remove the container
+docker rm pitchlab-app
+
+# View logs
+docker logs pitchlab-app
+```
+
+#### Advanced Usage
+
+```bash
+# Run with custom environment variables
+docker run -p 3000:3000 -e NODE_ENV=production pitchlab
+
+# Run with volume mounting for development
+docker run -p 3000:3000 -v $(pwd):/app pitchlab
+
+# Run with specific port
+docker run -p 8080:3000 pitchlab
+```
+
+### Docker Compose (Optional)
+
+Create a `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+services:
+  pitchlab:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+```
+
+Then run:
+```bash
+docker-compose up -d
+```
+
+## Local Development
+
+### Without Docker
+
+1. **Install dependencies**
+   ```bash
+   yarn install
+   ```
+
+2. **Run development server**
+   ```bash
+   yarn dev
+   ```
+
+3. **Build for production**
+   ```bash
+   yarn build
+   yarn start
+   ```
+
+### With Docker for Development
+
+1. **Create development Dockerfile** (`Dockerfile.dev`)
+   ```dockerfile
+   FROM node:18-alpine
+   WORKDIR /app
+   COPY package.json yarn.lock ./
+   RUN yarn install
+   COPY . .
+   EXPOSE 3000
+   CMD ["yarn", "dev"]
+   ```
+
+2. **Build and run development container**
+   ```bash
+   docker build -f Dockerfile.dev -t pitchlab-dev .
+   docker run -p 3000:3000 -v $(pwd):/app pitchlab-dev
+   ```
+
+## Deployment
+
+### Deploy to Cloud Platforms
+
+#### Heroku
+```bash
+# Install Heroku CLI
+heroku create your-app-name
+heroku container:push web
+heroku container:release web
+```
+
+#### Railway
+```bash
+# Connect your GitHub repo to Railway
+# Railway will automatically detect the Dockerfile
+```
+
+#### Docker Hub
+```bash
+# Tag and push to Docker Hub
+docker tag pitchlab your-username/pitchlab:latest
+docker push your-username/pitchlab:latest
+```
+
+### Production Deployment
+
+1. **Build production image**
+   ```bash
+   docker build -t pitchlab:prod .
+   ```
+
+2. **Run with production settings**
+   ```bash
+   docker run -d \
+     -p 3000:3000 \
+     --name pitchlab-prod \
+     --restart unless-stopped \
+     -e NODE_ENV=production \
+     pitchlab:prod
+   ```
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NODE_ENV` | Environment mode | `production` |
+| `PORT` | Server port | `3000` |
+| `HOSTNAME` | Server hostname | `0.0.0.0` |
+| `NEXT_TELEMETRY_DISABLED` | Disable Next.js telemetry | `1` |
+
+## Architecture
+
+```
+pitchlab/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── Sidebar.tsx     # Navigation sidebar
+│   ├── Boardroom.tsx   # Main dashboard
+│   └── Navbar.tsx      # Top navigation
+├── pages/              # Next.js pages
+├── styles/             # CSS styles
+├── public/             # Static assets
+├── Dockerfile          # Docker configuration
+├── docker-compose.yml  # Docker Compose configuration
+└── README.md          # This file
+```
+
+## AI Agents
+
+- **CTO Bot**: Technical strategy and MVP development
+- **CMO Bot**: Marketing strategy and customer acquisition
+- **CFO Bot**: Financial planning and fundraising
+- **Architect Bot**: System architecture and scalability
+
+## Technologies Used
+
+- **Next.js 14**: React framework
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Utility-first CSS
+- **Framer Motion**: Animations
+- **Lucide React**: Icons
+- **Docker**: Containerization
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test with Docker
+5. Submit a pull request
+
+## Troubleshooting
+
+### Common Issues
+
+**Port already in use:**
+```bash
+# Find process using port 3000
+lsof -i :3000
+# Or use different port
+docker run -p 3001:3000 pitchlab
+```
+
+**Container won't start:**
+```bash
+# Check logs
+docker logs pitchlab-app
+# Check container status
+docker ps -a
+```
+
+**Build fails:**
+```bash
+# Clean Docker cache
+docker builder prune
+# Rebuild without cache
+docker build --no-cache -t pitchlab .
+```
+
+## License
+
+MIT License - see LICENSE file for details.
+
+## Support
+
+For issues and questions, please open an issue in the GitHub repository.
